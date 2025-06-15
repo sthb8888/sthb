@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>阿里云资料库 | 安全跳转服务</title>
+    <title>安全访问 | 阿里云资料库</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
     <style>
@@ -31,7 +31,7 @@
         .container {
             max-width: 800px;
             width: 95%;
-            padding: 40px 30px;
+            padding: 30px;
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(12px);
             border-radius: 20px;
@@ -54,13 +54,12 @@
         
         .header {
             margin-bottom: 30px;
-            position: relative;
         }
         
         .logo-container {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
             background: linear-gradient(135deg, #1a56db 0%, #0e2a59 100%);
             border-radius: 50%;
             display: flex;
@@ -68,125 +67,89 @@
             justify-content: center;
             box-shadow: 0 8px 25px rgba(26, 86, 219, 0.4);
             border: 3px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .logo-container::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.05);
-            transform: rotate(30deg);
         }
         
         .logo {
-            font-size: 48px;
+            font-size: 40px;
             color: #fff;
-            z-index: 2;
         }
         
         h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
+            font-size: 28px;
+            margin-bottom: 15px;
             font-weight: 700;
             background: linear-gradient(to right, #a5b4fc, #60a5fa);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .subtitle {
-            font-size: 18px;
+            font-size: 16px;
             color: #cbd5e1;
             max-width: 600px;
-            margin: 0 auto 30px;
-            line-height: 1.7;
+            margin: 0 auto;
         }
         
         .card {
             background: rgba(15, 23, 42, 0.7);
             border-radius: 16px;
-            padding: 25px;
+            padding: 20px;
             margin: 25px 0;
             border: 1px solid rgba(100, 116, 139, 0.3);
             text-align: left;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
         
         .card-header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             padding-bottom: 15px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .card-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: rgba(59, 130, 246, 0.2);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
-            font-size: 24px;
+            margin-right: 12px;
+            font-size: 18px;
             color: #60a5fa;
         }
         
         .card-title {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
         }
         
-        .card-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
         .info-item {
-            background: rgba(30, 41, 59, 0.6);
-            padding: 15px;
-            border-radius: 12px;
+            margin: 15px 0;
             display: flex;
             align-items: center;
         }
         
         .info-icon {
-            font-size: 20px;
-            margin-right: 12px;
+            font-size: 18px;
+            margin-right: 10px;
             color: #93c5fd;
-        }
-        
-        .info-text {
-            font-size: 16px;
-        }
-        
-        .info-label {
-            display: block;
-            font-size: 14px;
-            color: #94a3b8;
-            margin-bottom: 4px;
+            min-width: 24px;
         }
         
         .btn-container {
-            margin: 35px 0;
+            margin: 30px 0;
         }
         
         .btn {
             display: inline-block;
-            padding: 18px 50px;
-            margin: 15px 0;
+            padding: 16px 40px;
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             color: white;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
             border-radius: 50px;
             transition: all 0.3s ease;
@@ -206,34 +169,9 @@
             transform: translateY(1px);
         }
         
-        .btn::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: rotate(30deg) translate(0, -150%);
-            transition: transform 0.8s ease;
-        }
-        
-        .btn:hover::after {
-            transform: rotate(30deg) translate(0, 100%);
-        }
-        
-        .btn-alt {
-            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-        }
-        
-        .btn-alt:hover {
-            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.5);
-        }
-        
         .loading {
-            font-size: 18px;
-            margin: 30px 0;
+            font-size: 16px;
+            margin: 20px 0;
             display: none;
             color: #cbd5e1;
         }
@@ -242,9 +180,9 @@
             border: 4px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             border-top: 4px solid #3b82f6;
-            width: 40px;
-            height: 40px;
-            margin: 20px auto;
+            width: 30px;
+            height: 30px;
+            margin: 15px auto;
             animation: spin 1s linear infinite;
             display: none;
         }
@@ -255,8 +193,8 @@
         }
         
         .qrcode-container {
-            margin-top: 40px;
-            padding: 25px;
+            margin-top: 30px;
+            padding: 20px;
             background: rgba(15, 23, 42, 0.7);
             border-radius: 16px;
             max-width: 500px;
@@ -266,118 +204,99 @@
         }
         
         .qrcode-title {
-            font-size: 20px;
-            margin-bottom: 15px;
+            font-size: 18px;
+            margin-bottom: 10px;
             color: #e2e8f0;
         }
         
         #qrcode {
-            width: 180px;
-            height: 180px;
-            margin: 15px auto;
+            width: 150px;
+            height: 150px;
+            margin: 10px auto;
             background: white;
-            padding: 15px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 10px;
+            border-radius: 10px;
         }
         
         .tip-text {
             font-size: 14px;
             color: #94a3b8;
-            margin-top: 15px;
-            padding: 0 20px;
+            margin-top: 10px;
         }
         
         .security-tips {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 25px;
-            font-size: 15px;
+            margin-top: 20px;
+            font-size: 14px;
             color: #93c5fd;
+            flex-wrap: wrap;
         }
         
         .security-tips i {
-            margin-right: 10px;
+            margin-right: 8px;
             color: #60a5fa;
         }
         
         .footer {
-            margin-top: 40px;
+            margin-top: 30px;
             color: #94a3b8;
-            font-size: 14px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-size: 13px;
         }
         
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
+        .alert {
+            display: none;
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
         }
         
-        .github-icon {
-            font-size: 20px;
+        .alert-title {
+            display: flex;
+            align-items: center;
+            color: #f87171;
+            margin-bottom: 8px;
+        }
+        
+        .alert-title i {
             margin-right: 8px;
-            color: #cbd5e1;
         }
         
-        @media (max-width: 768px) {
-            .container {
-                padding: 30px 20px;
-            }
-            
-            h1 {
-                font-size: 28px;
-            }
-            
-            .subtitle {
-                font-size: 16px;
-            }
-            
-            .logo-container {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .logo {
-                font-size: 40px;
-            }
-            
-            .btn {
-                padding: 16px 40px;
-                font-size: 18px;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-            
-            .card-title {
-                font-size: 20px;
-            }
-            
-            .card-content {
-                grid-template-columns: 1fr;
-            }
+        .success {
+            display: none;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
         }
         
         @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
             h1 {
                 font-size: 24px;
             }
             
-            .btn {
-                padding: 14px 35px;
-                font-size: 17px;
-                width: 100%;
-                margin: 10px 0;
+            .logo-container {
+                width: 80px;
+                height: 80px;
             }
             
-            .btn-container {
+            .logo {
+                font-size: 32px;
+            }
+            
+            .btn {
+                padding: 14px 30px;
+                font-size: 16px;
                 width: 100%;
             }
         }
@@ -392,124 +311,142 @@
                 </div>
             </div>
             
-            <h1>阿里云资料库安全访问</h1>
+            <h1>安全访问资料库</h1>
             <p class="subtitle">
-                您即将访问位于阿里云平台的资源资料库，所有资源均经过安全验证。
-                点击下方按钮继续访问，系统将在安全检测后为您跳转。
+                您即将访问位于阿里云的资源资料库，请完成安全验证后继续
             </p>
+        </div>
+        
+        <div class="alert" id="weixinAlert">
+            <div class="alert-title">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>微信访问提示</strong>
+            </div>
+            <p>检测到您正在使用微信浏览，请按以下步骤操作：</p>
+            <ol>
+                <li>点击下方安全访问按钮</li>
+                <li>等待3-5秒安全检测</li>
+                <li>根据提示在浏览器中打开</li>
+            </ol>
         </div>
         
         <div class="card">
             <div class="card-header">
                 <div class="card-icon">
-                    <i class="fas fa-file-alt"></i>
+                    <i class="fas fa-shield-alt"></i>
                 </div>
-                <div class="card-title">资源信息</div>
+                <div class="card-title">安全验证流程</div>
             </div>
-            <div class="card-content">
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-folder"></i>
-                    </div>
-                    <div>
-                        <span class="info-label">资料名称</span>
-                        <span class="info-text">产品技术白皮书与使用指南</span>
-                    </div>
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-1"></i>
                 </div>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-file-archive"></i>
-                    </div>
-                    <div>
-                        <span class="info-label">文件类型</span>
-                        <span class="info-text">PDF/ZIP压缩包</span>
-                    </div>
+                <div>点击下方按钮触发安全检测</div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-2"></i>
                 </div>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div>
-                        <span class="info-label">文件大小</span>
-                        <span class="info-text">286 MB</span>
-                    </div>
+                <div>等待系统完成自动验证（约3秒）</div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-3"></i>
                 </div>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <div>
-                        <span class="info-label">更新日期</span>
-                        <span class="info-text">2025年6月15日</span>
-                    </div>
-                </div>
+                <div>页面自动跳转至阿里云资源</div>
             </div>
         </div>
         
         <div class="btn-container">
             <button id="redirectBtn" class="btn">
-                <i class="fas fa-shield-alt"></i> 安全访问资料库
+                <i class="fas fa-shield-alt"></i> 开始安全验证
             </button>
+        </div>
+        
+        <div class="loading" id="loadingText">
+            正在进行安全检测，请勿关闭页面...
+        </div>
+        <div class="spinner" id="loadingSpinner"></div>
+        
+        <div class="success" id="successMessage">
+            <i class="fas fa-check-circle" style="font-size: 40px; color: #10b981; margin-bottom: 15px;"></i>
+            <h3 style="margin-bottom: 10px;">验证成功！</h3>
+            <p>您已完成安全验证，即将跳转至资源页面</p>
         </div>
         
         <div class="security-tips">
             <i class="fas fa-info-circle"></i>
-            <span>安全提示：本跳转服务由GitHub Pages提供技术支持，安全可靠</span>
+            <span>本服务由GitHub Pages提供支持，安全可靠</span>
         </div>
-        
-        <div class="loading" id="loadingText">
-            <p>正在进行安全验证，请稍候...</p>
-            <p>这通常需要3-5秒时间</p>
-        </div>
-        <div class="spinner" id="loadingSpinner"></div>
         
         <div class="qrcode-container">
             <div class="qrcode-title">
                 <i class="fas fa-qrcode"></i> 备用访问方式
             </div>
-            <p>如遇访问问题，请扫描二维码在浏览器中打开</p>
+            <p>如无法自动跳转，请扫描二维码：</p>
             <div id="qrcode"></div>
-            <p class="tip-text">微信扫描后选择"在浏览器打开"即可访问资源</p>
+            <p class="tip-text">微信扫描后选择"在浏览器打开"</p>
+            
+            <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                <p style="margin-bottom: 10px;"><i class="fas fa-link"></i> 手动复制链接：</p>
+                <div style="display: flex;">
+                    <input type="text" id="manualLink" style="flex:1; padding: 8px 12px; border-radius: 6px 0 0 6px; border: none; background: rgba(255,255,255,0.9);">
+                    <button id="copyBtn" style="padding: 8px 15px; background: #3b82f6; color: white; border: none; border-radius: 0 6px 6px 0; cursor: pointer;">复制</button>
+                </div>
+            </div>
         </div>
         
         <div class="footer">
-            <div class="footer-logo">
-                <i class="fab fa-github github-icon"></i>
-                <span>GitHub Pages 安全跳转服务</span>
-            </div>
-            <p>© 2025 阿里云资源访问平台 | 技术支持</p>
+            <p>© 2025 资源访问服务 | 技术支持</p>
         </div>
     </div>
 
     <script>
         // ===== 配置区域（修改此处）=====
-        const ALIYUN_URL = 'https://www.aliyundrive.com/s/EXAMPLE_RESOURCE_LINK'; // 替换为你的阿里云地址
+        const ALIYUN_URL = 'http://8.218.131.183:8080/resources/'; // 替换为你的阿里云地址
         // ===========================
-        
-        // 对真实链接进行Base64编码
-        const ENCODED_URL = btoa(ALIYUN_URL);
         
         const redirectBtn = document.getElementById('redirectBtn');
         const loadingText = document.getElementById('loadingText');
         const loadingSpinner = document.getElementById('loadingSpinner');
         const qrcodeElement = document.getElementById('qrcode');
+        const weixinAlert = document.getElementById('weixinAlert');
+        const successMessage = document.getElementById('successMessage');
+        const manualLink = document.getElementById('manualLink');
+        const copyBtn = document.getElementById('copyBtn');
+        
+        // 设置手动链接
+        manualLink.value = ALIYUN_URL;
         
         // 生成二维码
         new QRCode(qrcodeElement, {
-            text: window.location.href,
-            width: 150,
-            height: 150,
-            colorDark : "#000000",
-            colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.H
+            text: ALIYUN_URL,
+            width: 128,
+            height: 128,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+        
+        // 复制链接功能
+        copyBtn.addEventListener('click', function() {
+            manualLink.select();
+            document.execCommand('copy');
+            copyBtn.innerHTML = '<i class="fas fa-check"></i> 已复制';
+            setTimeout(() => {
+                copyBtn.innerHTML = '复制';
+            }, 2000);
         });
         
         // 检测是否是微信浏览器
         function isWeixinBrowser() {
-            return /MicroMessenger/i.test(navigator.userAgent);
+            const ua = navigator.userAgent.toLowerCase();
+            return /micromessenger/.test(ua);
+        }
+        
+        // 显示微信提示
+        if (isWeixinBrowser()) {
+            weixinAlert.style.display = 'block';
         }
         
         // 处理跳转逻辑
@@ -520,45 +457,53 @@
             loadingText.style.display = 'block';
             loadingSpinner.style.display = 'block';
             
-            // 解码Base64链接
-            const decodedUrl = atob(ENCODED_URL);
-            
-            // 添加延迟以通过微信安全检测
+            // 模拟安全验证过程
             setTimeout(() => {
-                // 微信环境特殊处理
-                if (isWeixinBrowser()) {
-                    // 方法1：使用iframe尝试跳转
-                    const iframe = document.createElement('iframe');
-                    iframe.style.display = 'none';
-                    iframe.src = decodedUrl;
-                    document.body.appendChild(iframe);
-                    
-                    // 方法2：显示提示
-                    setTimeout(() => {
-                        alert('请在右上角菜单中选择"在浏览器打开"以访问资源');
-                    }, 1500);
-                } else {
-                    // 非微信环境直接跳转
-                    window.location.href = decodedUrl;
-                }
+                loadingText.style.display = 'none';
+                loadingSpinner.style.display = 'none';
+                successMessage.style.display = 'block';
                 
-                // 5秒后恢复按钮状态（如果用户返回）
+                // 继续跳转
                 setTimeout(() => {
-                    redirectBtn.disabled = false;
-                    redirectBtn.style.opacity = '1';
-                    loadingText.style.display = 'none';
-                    loadingSpinner.style.display = 'none';
-                }, 5000);
-            }, 3000); // 3秒延迟减少被拦截概率
+                    // 微信环境特殊处理
+                    if (isWeixinBrowser()) {
+                        // 方法1：使用iframe尝试跳转
+                        const iframe = document.createElement('iframe');
+                        iframe.style.display = 'none';
+                        iframe.src = ALIYUN_URL;
+                        document.body.appendChild(iframe);
+                        
+                        // 方法2：显示提示引导用户
+                        setTimeout(() => {
+                            successMessage.innerHTML = `
+                                <h3>请在浏览器中打开</h3>
+                                <p style="margin: 15px 0;">微信限制直接跳转，请点击右上角菜单<br>选择"在浏览器打开"以访问资源</p>
+                                <button class="btn" onclick="window.open('${ALIYUN_URL}', '_blank')" style="margin-top: 10px;">
+                                    <i class="fas fa-external-link-alt"></i> 在浏览器打开
+                                </button>
+                            `;
+                        }, 1000);
+                    } else {
+                        // 非微信环境直接跳转
+                        window.location.href = ALIYUN_URL;
+                    }
+                }, 2000);
+            }, 3000);
         }
         
         // 绑定按钮点击事件
         redirectBtn.addEventListener('click', handleRedirect);
         
-        // 显示安全提示（如果是微信浏览器）
-        if (isWeixinBrowser()) {
-            document.querySelector('.security-tips').innerHTML += '<br><span style="color:#f87171">检测到微信浏览器，请按提示操作</span>';
-        }
+        // 页面加载时检查访问问题
+        window.addEventListener('DOMContentLoaded', function() {
+            // 模拟网络检查
+            setTimeout(() => {
+                if (window.location.hostname !== 'username.github.io') {
+                    document.querySelector('.subtitle').innerHTML = 
+                        '检测到非GitHub官方域名访问<br>请使用 https://username.github.io 访问此页面';
+                }
+            }, 1000);
+        });
     </script>
 </body>
 </html>
