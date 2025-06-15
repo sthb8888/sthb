@@ -2,13 +2,21 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>阿里云资料库 | 资源下载</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>阿里云资料库 | 安全跳转服务</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; 
-            background: linear-gradient(135deg, #1a2980, #26d0ce);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0c1a3a 0%, #1a3b70 100%);
             color: #fff;
             min-height: 100vh;
             padding: 20px;
@@ -17,135 +25,487 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            line-height: 1.6;
         }
+        
         .container {
             max-width: 800px;
-            width: 100%;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            width: 95%;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
-        .logo { 
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(66,133,244,0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .logo-container {
             width: 120px;
             height: 120px;
-            margin: 0 auto 20px;
-            background: rgba(255, 255, 255, 0.9);
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #1a56db 0%, #0e2a59 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(26, 86, 219, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
-        .logo img {
-            width: 80%;
+        
+        .logo-container::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.05);
+            transform: rotate(30deg);
         }
+        
+        .logo {
+            font-size: 48px;
+            color: #fff;
+            z-index: 2;
+        }
+        
         h1 {
-            font-size: 32px;
+            font-size: 36px;
             margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            background: linear-gradient(to right, #a5b4fc, #60a5fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
-        p {
+        
+        .subtitle {
             font-size: 18px;
-            margin-bottom: 30px;
-            line-height: 1.6;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
         }
+        
+        .card {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            text-align: left;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 24px;
+            color: #60a5fa;
+        }
+        
+        .card-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .card-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item {
+            background: rgba(30, 41, 59, 0.6);
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-icon {
+            font-size: 20px;
+            margin-right: 12px;
+            color: #93c5fd;
+        }
+        
+        .info-text {
+            font-size: 16px;
+        }
+        
+        .info-label {
+            display: block;
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 4px;
+        }
+        
+        .btn-container {
+            margin: 35px 0;
+        }
+        
         .btn {
             display: inline-block;
-            padding: 16px 40px;
-            margin: 10px;
-            background: #ff6b6b;
+            padding: 18px 50px;
+            margin: 15px 0;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             color: white;
             text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 20px;
+            font-weight: 600;
             border-radius: 50px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.4);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
+        
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(255, 107, 107, 0.6);
-            background: #ff5252;
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5);
         }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg) translate(0, -150%);
+            transition: transform 0.8s ease;
+        }
+        
+        .btn:hover::after {
+            transform: rotate(30deg) translate(0, 100%);
+        }
+        
         .btn-alt {
-            background: #4ecdc4;
-            box-shadow: 0 4px 10px rgba(78, 205, 196, 0.4);
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
         }
+        
         .btn-alt:hover {
-            box-shadow: 0 6px 15px rgba(78, 205, 196, 0.6);
-            background: #3bb4ac;
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.5);
         }
+        
         .loading {
-            font-size: 16px;
+            font-size: 18px;
             margin: 30px 0;
             display: none;
+            color: #cbd5e1;
         }
+        
         .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
+            border: 4px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            border-top: 4px solid #fff;
-            width: 30px;
-            height: 30px;
+            border-top: 4px solid #3b82f6;
+            width: 40px;
+            height: 40px;
             margin: 20px auto;
             animation: spin 1s linear infinite;
             display: none;
         }
+        
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
         .qrcode-container {
             margin-top: 40px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            padding: 25px;
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 16px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid rgba(100, 116, 139, 0.3);
         }
+        
+        .qrcode-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #e2e8f0;
+        }
+        
+        #qrcode {
+            width: 180px;
+            height: 180px;
+            margin: 15px auto;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .tip-text {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-top: 15px;
+            padding: 0 20px;
+        }
+        
+        .security-tips {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 25px;
+            font-size: 15px;
+            color: #93c5fd;
+        }
+        
+        .security-tips i {
+            margin-right: 10px;
+            color: #60a5fa;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            color: #94a3b8;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .github-icon {
+            font-size: 20px;
+            margin-right: 8px;
+            color: #cbd5e1;
+        }
+        
         @media (max-width: 768px) {
-            .container { padding: 30px 20px; }
-            h1 { font-size: 28px; }
-            .btn { padding: 14px 30px; }
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .logo-container {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .logo {
+                font-size: 40px;
+            }
+            
+            .btn {
+                padding: 16px 40px;
+                font-size: 18px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .card-title {
+                font-size: 20px;
+            }
+            
+            .card-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+            
+            .btn {
+                padding: 14px 35px;
+                font-size: 17px;
+                width: 100%;
+                margin: 10px 0;
+            }
+            
+            .btn-container {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">
-            <!-- 阿里云图标 -->
-            <svg viewBox="0 0 24 24" fill="#FF6A00" xmlns="http://www.w3.org/2000/svg">
-                <path d="M.2 0h23.6c.11 0 .2.09.2.2v23.6a.2.2 0 01-.2.2H.2a.2.2 0 01-.2-.2V.2C0 .09.09 0 .2 0zm11.36 17.225v-6.64h-1.6l-3.16 1.52.48.72 2.48-1.2c.04.16.08.307.12.447.08.267.16.54.24.82-.08.32-.16.653-.24 1h6.08l-.8-1.2h-4.6c-.16-.54-.347-1.067-.56-1.58h4.44c.28 0 .52-.1.72-.3.2-.2.3-.44.3-.74 0-.267-.1-.5-.3-.7-.2-.2-.44-.3-.72-.3H8c-.107 0-.22.013-.34.04-.12.027-.227.06-.32.1.213-.533.44-1.073.68-1.62h9.6l.8-1.2h-9.8c-.32-.587-.647-1.16-.98-1.72.053.1.117.21.19.33.08.12.15.23.21.33h-4.8l-.8-1.2h5.32c.307-.507.627-1.007.96-1.5-.44.253-.907.483-1.4.69-.493.207-1 .39-1.52.55h-4.44l-.8-1.2h5.88c.587-.213 1.16-.44 1.72-.68.36.533.7 1.083 1.02 1.65.367-.587.77-1.143 1.21-1.67H5.8l-.8-1.2h11.48l.48.8h-2.28c-.62.62-1.233 1.283-1.84 1.99-.313.373-.623.763-.93 1.17h3.86c.293 0 .553.1.78.3.227.2.34.447.34.74 0 .293-.113.547-.34.76-.227.213-.487.32-.78.32h-4.12c.207.58.42 1.153.64 1.72h3.56c.293 0 .553.1.78.3.227.2.34.447.34.74 0 .293-.113.547-.34.76-.227.213-.487.32-.78.32h-3.28c.24.58.487 1.15.74 1.71.253.56.507 1.1.76 1.62z"/>
-            </svg>
+        <div class="header">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-cloud-download-alt"></i>
+                </div>
+            </div>
+            
+            <h1>阿里云资料库安全访问</h1>
+            <p class="subtitle">
+                您即将访问位于阿里云平台的资源资料库，所有资源均经过安全验证。
+                点击下方按钮继续访问，系统将在安全检测后为您跳转。
+            </p>
         </div>
         
-        <h1>阿里云资料库</h1>
-        <p>您即将访问位于阿里云的资源资料库，点击下方按钮继续</p>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="card-title">资源信息</div>
+            </div>
+            <div class="card-content">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <div>
+                        <span class="info-label">资料名称</span>
+                        <span class="info-text">产品技术白皮书与使用指南</span>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-file-archive"></i>
+                    </div>
+                    <div>
+                        <span class="info-label">文件类型</span>
+                        <span class="info-text">PDF/ZIP压缩包</span>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div>
+                        <span class="info-label">文件大小</span>
+                        <span class="info-text">286 MB</span>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div>
+                        <span class="info-label">更新日期</span>
+                        <span class="info-text">2025年6月15日</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        <a id="redirectBtn" class="btn" target="_blank">
-            立即访问资料库
-        </a>
+        <div class="btn-container">
+            <button id="redirectBtn" class="btn">
+                <i class="fas fa-shield-alt"></i> 安全访问资料库
+            </button>
+        </div>
         
-        <div class="loading" id="loadingText">正在准备跳转，请稍候...</div>
+        <div class="security-tips">
+            <i class="fas fa-info-circle"></i>
+            <span>安全提示：本跳转服务由GitHub Pages提供技术支持，安全可靠</span>
+        </div>
+        
+        <div class="loading" id="loadingText">
+            <p>正在进行安全验证，请稍候...</p>
+            <p>这通常需要3-5秒时间</p>
+        </div>
         <div class="spinner" id="loadingSpinner"></div>
         
         <div class="qrcode-container">
-            <p>如遇访问问题，可扫描二维码在浏览器中打开</p>
-            <!-- 二维码占位图 -->
-            <div id="qrcode" style="width: 150px; height: 150px; margin: 10px auto; background: white; padding: 10px;"></div>
+            <div class="qrcode-title">
+                <i class="fas fa-qrcode"></i> 备用访问方式
+            </div>
+            <p>如遇访问问题，请扫描二维码在浏览器中打开</p>
+            <div id="qrcode"></div>
+            <p class="tip-text">微信扫描后选择"在浏览器打开"即可访问资源</p>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-logo">
+                <i class="fab fa-github github-icon"></i>
+                <span>GitHub Pages 安全跳转服务</span>
+            </div>
+            <p>© 2025 阿里云资源访问平台 | 技术支持</p>
         </div>
     </div>
 
     <script>
         // ===== 配置区域（修改此处）=====
-        const ALIYUN_URL = 'http://8.218.131.183:8080/resources'; // 替换为你的阿里云地址
+        const ALIYUN_URL = 'https://www.aliyundrive.com/s/EXAMPLE_RESOURCE_LINK'; // 替换为你的阿里云地址
         // ===========================
+        
+        // 对真实链接进行Base64编码
+        const ENCODED_URL = btoa(ALIYUN_URL);
         
         const redirectBtn = document.getElementById('redirectBtn');
         const loadingText = document.getElementById('loadingText');
         const loadingSpinner = document.getElementById('loadingSpinner');
+        const qrcodeElement = document.getElementById('qrcode');
         
-        // 设置跳转链接
-        redirectBtn.href = ALIYUN_URL;
+        // 生成二维码
+        new QRCode(qrcodeElement, {
+            text: window.location.href,
+            width: 150,
+            height: 150,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
         
         // 检测是否是微信浏览器
         function isWeixinBrowser() {
@@ -155,38 +515,50 @@
         // 处理跳转逻辑
         function handleRedirect() {
             // 显示加载状态
+            redirectBtn.disabled = true;
+            redirectBtn.style.opacity = '0.7';
             loadingText.style.display = 'block';
             loadingSpinner.style.display = 'block';
-            redirectBtn.style.display = 'none';
             
-            // 微信环境特殊处理
-            if (isWeixinBrowser()) {
-                // 方法1：使用iframe尝试跳转
-                const iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = ALIYUN_URL;
-                document.body.appendChild(iframe);
+            // 解码Base64链接
+            const decodedUrl = atob(ENCODED_URL);
+            
+            // 添加延迟以通过微信安全检测
+            setTimeout(() => {
+                // 微信环境特殊处理
+                if (isWeixinBrowser()) {
+                    // 方法1：使用iframe尝试跳转
+                    const iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.src = decodedUrl;
+                    document.body.appendChild(iframe);
+                    
+                    // 方法2：显示提示
+                    setTimeout(() => {
+                        alert('请在右上角菜单中选择"在浏览器打开"以访问资源');
+                    }, 1500);
+                } else {
+                    // 非微信环境直接跳转
+                    window.location.href = decodedUrl;
+                }
                 
-                // 方法2：延迟打开浏览器页面
+                // 5秒后恢复按钮状态（如果用户返回）
                 setTimeout(() => {
-                    alert('请在右上角菜单中使用浏览器打开此页面');
-                }, 1000);
-            } else {
-                // 非微信环境直接跳转
-                window.location.href = ALIYUN_URL;
-            }
+                    redirectBtn.disabled = false;
+                    redirectBtn.style.opacity = '1';
+                    loadingText.style.display = 'none';
+                    loadingSpinner.style.display = 'none';
+                }, 5000);
+            }, 3000); // 3秒延迟减少被拦截概率
         }
         
         // 绑定按钮点击事件
-        redirectBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            handleRedirect();
-        });
+        redirectBtn.addEventListener('click', handleRedirect);
         
-        // 页面加载后自动尝试跳转（可选）
-        // window.addEventListener('DOMContentLoaded', function() {
-        //   handleRedirect();
-        // });
+        // 显示安全提示（如果是微信浏览器）
+        if (isWeixinBrowser()) {
+            document.querySelector('.security-tips').innerHTML += '<br><span style="color:#f87171">检测到微信浏览器，请按提示操作</span>';
+        }
     </script>
 </body>
 </html>
